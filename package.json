@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "node site/server.mjs",
     "build": "node site/build.mjs",
-    "preview": "node site/server.mjs"
+    "preview": "node site/server.mjs",
+    "check:concert": "node scripts/check-concert-data.cjs && node scripts/check-concert-export.cjs && node scripts/check-concert-scroll.cjs && node scripts/check-concert-tracker.cjs",
+    "check:concert:browser": "node scripts/check-concert.cjs"
   },
   "dependencies": {
     "@gsap/react": "latest",

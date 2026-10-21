@@ -37,14 +37,14 @@ assert.match(html,/<textarea[^>]+id="left-sign"/);assert.match(html,/<textarea[^
 console.log(`Passed ${checks} screen/placard projection corner checks, track lifetimes, and editor bindings.`);
 (async()=>{
   const base='http://127.0.0.1:5173';
-  const video='/assets/concert/concert-flight.mp4',size=fs.statSync('site'+video).size;
+  const video='/assets/concert/concert-scrub.mp4',size=fs.statSync('site'+video).size;
   const head=await fetch(base+video,{method:'HEAD'});
   assert.equal(head.status,200);assert.equal(head.headers.get('content-type'),'video/mp4');assert.equal(Number(head.headers.get('content-length')),size);
   for(const [range,length,expected]of [['bytes=0-1023',1024,206],['bytes=-512',512,206],[`bytes=${size}-`,0,416]]){
     const response=await fetch(base+video,{headers:{Range:range}});
     assert.equal(response.status,expected);assert.equal((await response.arrayBuffer()).byteLength,length);
   }
-  for(const route of ['/concert.html','/concert.css','/concert.js','/concert-tracking.js','/concert-projection.js']){
+  for(const route of ['/concert.html','/concert.css','/concert.js','/concert-tracking.js','/concert-projection.js','/concert-tracker.js','/concert-calibration.js']){
     const response=await fetch(base+route);assert.equal(response.status,200);
     assert.equal(await response.text(),fs.readFileSync('site'+route,'utf8'),`Stale build: ${route}`);
   }

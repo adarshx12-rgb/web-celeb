@@ -8,10 +8,10 @@
     const mix=position-index;
     return a.map((p,i)=>p.map((v,j)=>v+(b[i][j]-v)*mix));
   }
-  function project(quad,scale=1){
+  function project(quad,scale=1,planeWidth,planeHeight){
     const q=quad.map(([x,y])=>({x:x*scale,y:y*scale}));
-    const width=Math.max(...q.map(p=>p.x))-Math.min(...q.map(p=>p.x));
-    const height=Math.max(...q.map(p=>p.y))-Math.min(...q.map(p=>p.y));
+    const width=planeWidth??Math.max(...q.map(p=>p.x))-Math.min(...q.map(p=>p.x));
+    const height=planeHeight??Math.max(...q.map(p=>p.y))-Math.min(...q.map(p=>p.y));
     const [p0,p1,p2,p3]=q;
     const dx1=p1.x-p2.x,dx2=p3.x-p2.x,dx3=p0.x-p1.x+p2.x-p3.x;
     const dy1=p1.y-p2.y,dy2=p3.y-p2.y,dy3=p0.y-p1.y+p2.y-p3.y;

@@ -4,7 +4,7 @@ import path from 'node:path';
 const root=path.dirname(fileURLToPath(import.meta.url));
 const dist=path.join(root,'dist');
 await mkdir(path.join(dist,'vendor'),{recursive:true});
-for(const file of ['index.html','styles.css','app.js','catalog.js','concert.html','concert.css','concert.js','concert-tracking.js','concert-projection.js','template.html','template.css','template.js'])await copyFile(path.join(root,file),path.join(dist,file));
+for(const file of ['index.html','styles.css','app.js','catalog.js','concert.html','concert.css','concert.js','concert-tracking.js','concert-projection.js','concert-tracker.js','concert-calibration.js','template.html','template.css','template.js'])await copyFile(path.join(root,file),path.join(dist,file));
 await cp(path.join(root,'assets'),path.join(dist,'assets'),{recursive:true});
 for(const file of ['gsap.min.js','ScrollTrigger.min.js'])await copyFile(path.join(root,'../node_modules/gsap/dist',file),path.join(dist,'vendor',file));
 await cp(path.join(root,'../node_modules/gsap/README.md'),path.join(dist,'vendor/GSAP-README.md'));

@@ -2,9 +2,14 @@ node_modules/
 .npm-cache/
 dist/
 output/
+.tools/
+__pycache__/
 .agents/
 .claude/
 .openai/
 .env
 .env.*
 !.env.example
+
+# Raw AI-generation sources (key frames, clips, takes); too large for git
+site/assets/anniversary/source/

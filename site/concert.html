@@ -11,10 +11,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preload" href="/assets/concert/flight-poster.jpg" as="image">
   <link rel="stylesheet" href="/concert.css">
-  <script src="/vendor/gsap.min.js" defer></script>
-  <script src="/vendor/ScrollTrigger.min.js" defer></script>
   <script src="/concert-tracking.js" defer></script>
   <script src="/concert-projection.js" defer></script>
+  <script src="/concert-tracker.js" defer></script>
+  <script src="/concert-calibration.js" defer></script>
   <script src="/concert.js" defer></script>
 </head>
 <body class="concert-lobby">
@@ -29,7 +29,8 @@
     <section class="concert-stage" id="concert-stage" tabindex="-1" aria-label="Your birthday concert: scroll from the crowd to the stage">
       <div class="scene-shell">
         <div class="scene-frame">
-          <video id="concert-video" class="concert-video" muted playsinline preload="auto" poster="/assets/concert/flight-poster.jpg" aria-hidden="true"><source src="/assets/concert/concert-flight.mp4" type="video/mp4"></video>
+          <video id="concert-video" class="concert-video" muted playsinline preload="auto" poster="/assets/concert/flight-poster.jpg" aria-hidden="true"><source src="/assets/concert/concert-scrub.mp4" type="video/mp4"></video>
+          <canvas id="concert-frame" aria-hidden="true"></canvas>
           <div class="led-screen tracked-main" data-surface="main" aria-hidden="true">
             <div class="final-title screen-copy"><span class="screen-eyebrow" data-headline>Happy birthday</span><strong class="screen-name" data-name>Alex</strong><span class="screen-footer">Your life. Your people. Your night.</span></div>
             <div class="memory-screen"><img id="screen-photo" alt=""><div class="memory-caption"><span id="memory-number">01 / 03</span><strong id="memory-caption">For the memories.</strong></div></div>
@@ -39,7 +40,6 @@
           <div class="led-screen tracked-right side-screen" data-surface="right" aria-hidden="true"><span>Chapter</span><strong data-age>25</strong><span>Just getting started.</span></div>
           <button class="crowd-sign sign-left" data-surface="signLeft" data-sign="left" aria-label="Edit the note on the left audience card"></button>
           <button class="crowd-sign sign-right" data-surface="signRight" data-sign="right" aria-label="Edit the note on the right audience card"></button>
-          <canvas id="screen-atmosphere" aria-hidden="true"></canvas>
         </div>
       </div>
       <div class="scene-vignette" aria-hidden="true"></div>
@@ -83,6 +83,8 @@
   <nav class="concert-tools" aria-label="Concert controls">
     <button id="edit-screens" class="creator-only">Edit screens</button>
     <button id="edit-cards" class="creator-only">Audience notes</button>
+    <button id="edit-tracking" class="creator-only">Align screens</button>
+    <button id="show-dedication">Birthday message</button>
     <button data-replay>Replay</button>
     <button id="exit-concert">Exit concert</button>
   </nav>
@@ -97,6 +99,7 @@
       <label>The final dedication<textarea name="note" id="concert-note" rows="4" maxlength="280" required></textarea></label>
       <fieldset><legend>Screen glow</legend><div class="concert-palettes"><button type="button" data-accent="cyan" aria-label="Cyan screen glow" aria-pressed="true" style="--swatch:#82e8f5"></button><button type="button" data-accent="amber" aria-label="Amber screen glow" aria-pressed="false" style="--swatch:#ffc17f"></button><button type="button" data-accent="white" aria-label="White screen glow" aria-pressed="false" style="--swatch:#f1f0e8"></button></div></fieldset>
       <fieldset><legend>Stage screen photos & text</legend><p class="field-hint">Add up to 4 photos and a message for each. Scroll toward the stage to see them on the screen.</p><label class="upload-box" for="concert-photos"><span>＋ Add your photos</span><input id="concert-photos" type="file" accept="image/jpeg,image/png,image/webp" multiple></label><label>Photo framing<select id="photo-fit"><option value="contain">Show the whole photo</option><option value="cover">Fill the screen (crop edges)</option></select></label><div id="photo-list" class="photo-list"></div></fieldset>
+      <button type="button" id="align-from-editor" class="panel-secondary">Align screens & audience cards</button>
       <p id="customization-status" class="customization-status" role="status">Your changes stay in this browser until you download the celebration.</p>
       <div class="panel-actions"><button type="submit" class="panel-primary">Save & preview</button><button type="button" id="download-concert" class="panel-secondary">Download celebration</button></div>
       <button type="button" id="reset-concert" class="reset-button">Reset to sample content</button>

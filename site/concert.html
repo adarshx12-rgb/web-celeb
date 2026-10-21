@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#020a10">
+  <title>Headliner — A birthday worth making noise for</title>
+  <meta name="description" content="Their name in lights. Their own birthday concert. An immersive, personal celebration by Little Cheers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/concert/flight-poster.jpg" as="image">
+  <link rel="stylesheet" href="/concert.css">
+  <script src="/vendor/gsap.min.js" defer></script>
+  <script src="/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="/concert-tracking.js" defer></script>
+  <script src="/concert-projection.js" defer></script>
+  <script src="/concert.js" defer></script>
+</head>
+<body class="concert-lobby">
+  <a class="skip-link" href="#dedication">Skip to the birthday message</a>
+  <header class="concert-header">
+    <a class="concert-brand" href="/#templates" aria-label="Back to Little Cheers templates"><span aria-hidden="true">✳</span> little cheers</a>
+    <span class="preview-tag creator-only">Headliner <span>Birthday preview</span></span>
+    <button class="edit-trigger creator-only" id="edit-trigger">Make it yours <span aria-hidden="true">↗</span></button>
+    <button class="replay-top recipient-only" data-replay>Replay the night</button>
+  </header>
+  <main>
+    <section class="concert-stage" id="concert-stage" tabindex="-1" aria-label="Your birthday concert: scroll from the crowd to the stage">
+      <div class="scene-shell">
+        <div class="scene-frame">
+          <video id="concert-video" class="concert-video" muted playsinline preload="auto" poster="/assets/concert/flight-poster.jpg" aria-hidden="true"><source src="/assets/concert/concert-flight.mp4" type="video/mp4"></video>
+          <div class="led-screen tracked-main" data-surface="main" aria-hidden="true">
+            <div class="final-title screen-copy"><span class="screen-eyebrow" data-headline>Happy birthday</span><strong class="screen-name" data-name>Alex</strong><span class="screen-footer">Your life. Your people. Your night.</span></div>
+            <div class="memory-screen"><img id="screen-photo" alt=""><div class="memory-caption"><span id="memory-number">01 / 03</span><strong id="memory-caption">For the memories.</strong></div></div>
+            <div class="note-screen"><span>This one's for you.</span><p data-note></p><strong data-from></strong></div>
+          </div>
+          <div class="led-screen tracked-left side-screen" data-surface="left" aria-hidden="true"><span>Happy</span><strong>BIRTH<br>DAY.</strong><span data-name>Alex</span></div>
+          <div class="led-screen tracked-right side-screen" data-surface="right" aria-hidden="true"><span>Chapter</span><strong data-age>25</strong><span>Just getting started.</span></div>
+          <button class="crowd-sign sign-left" data-surface="signLeft" data-sign="left" aria-label="Edit the note on the left audience card"></button>
+          <button class="crowd-sign sign-right" data-surface="signRight" data-sign="right" aria-label="Edit the note on the right audience card"></button>
+          <canvas id="screen-atmosphere" aria-hidden="true"></canvas>
+        </div>
+      </div>
+      <div class="scene-vignette" aria-hidden="true"></div>
+      <p id="video-status" class="video-status" role="status">Preparing your concert...</p>
+      <div class="opening-copy">
+        <p class="opening-kicker"><span></span> Your people. Your night.</p>
+        <h1>A whole crowd.<br>One headliner.</h1>
+        <p class="opening-description">For <span data-name>Alex</span>. For every version of you.<br>For the year that's about to be yours.</p>
+        <button class="enter-button" id="enter-concert">Enter concert <span aria-hidden="true">→</span></button>
+      </div>
+      <div class="drop-copy"><span>This is your moment.</span><p>MAKE SOME<br>NOISE.</p></div>
+      <div class="arrival-copy"><span>Every memory got you here.</span><p>And the best part?<br>You're just getting started.</p></div>
+      <div class="memory-controls" id="memory-controls">
+        <button id="previous-memory" aria-label="Previous memory">←</button>
+        <span id="memory-label" role="status">Your memories, on the big screen</span>
+        <button id="next-memory" aria-label="Next memory">→</button>
+      </div>
+      <div class="scene-bottom">
+        <span class="scroll-direction">Scroll to turn it up <span aria-hidden="true">↓</span></span>
+        <span class="scene-counter" id="scene-counter">01 / The anticipation</span>
+      </div>
+      <nav class="chapter-nav" aria-label="Concert chapters">
+        <button data-chapter="0" aria-label="Jump to the crowd" aria-current="step"><i></i><span>The crowd</span></button>
+        <button data-chapter="0.37" aria-label="Jump to the fire reveal"><i></i><span>The drop</span></button>
+        <button data-chapter="0.68" aria-label="Jump to the stage"><i></i><span>Your stage</span></button>
+        <button data-chapter="0.96" aria-label="Jump to the dedication"><i></i><span>For you</span></button>
+      </nav>
+      <div class="journey-progress" aria-hidden="true"><span id="journey-progress"></span></div>
+    </section>
+    <section class="dedication" id="dedication" aria-labelledby="dedication-title">
+      <span class="encore-mark" aria-hidden="true">✳</span>
+      <p class="dedication-intro">After the lights go down.</p>
+      <h2 id="dedication-title">Still your biggest fans.</h2>
+      <p class="dedication-message" data-note>Here's to the nights we'll never forget, the people who never leave, and everything still waiting for you. Happy birthday, legend.</p>
+      <p class="dedication-from" data-from>With love, your people</p>
+      <div class="encore-actions"><button class="enter-button" data-replay>One more time <span aria-hidden="true">↺</span></button><button class="quiet-button creator-only" id="edit-bottom">Make this their night</button></div>
+      <p class="birthday-date">Happy birthday, <span data-name>Alex</span>.</p>
+    </section>
+  </main>
+  <footer class="concert-footer"><a href="/">Made with little cheers ✳</a><span>A little website. A very big feeling.</span></footer>
+  <nav class="concert-tools" aria-label="Concert controls">
+    <button id="edit-screens" class="creator-only">Edit screens</button>
+    <button id="edit-cards" class="creator-only">Audience notes</button>
+    <button data-replay>Replay</button>
+    <button id="exit-concert">Exit concert</button>
+  </nav>
+  <p class="immersive-hint" aria-live="polite">Scroll to move through the crowd</p>
+  <dialog id="personalize" class="personalize" aria-labelledby="personalize-title">
+    <div class="panel-heading"><div><p>Headliner / Birthday</p><h2 id="personalize-title">Their name in lights.</h2></div><button id="close-personalize" aria-label="Close customization">×</button></div>
+    <form id="concert-form">
+      <label>Their name<input name="name" id="concert-name" maxlength="24" required autocomplete="off" value="Alex"></label>
+      <label>Stage screen headline<input name="headline" id="screen-headline" maxlength="48" value="Happy birthday"></label>
+      <div class="form-row"><label>Turning<input name="age" id="concert-age" type="number" min="1" max="120" value="25" required></label><label>From<input name="sender" id="concert-sender" maxlength="45" value="your people"></label></div>
+      <fieldset id="audience-notes"><legend>Audience card notes</legend><label>Left audience card<textarea name="leftSign" id="left-sign" rows="3" maxlength="180">Happy birthday, {name}!</textarea></label><label>Right audience card<textarea name="rightSign" id="right-sign" rows="3" maxlength="180">You're the headliner.</textarea></label><p class="field-hint">Write a personal note for each card. Use {name} for their name. Short notes read best. Cards leave the frame as the camera flies past.</p><button type="button" id="preview-cards" class="panel-secondary">Preview audience cards</button></fieldset>
+      <label>The final dedication<textarea name="note" id="concert-note" rows="4" maxlength="280" required></textarea></label>
+      <fieldset><legend>Screen glow</legend><div class="concert-palettes"><button type="button" data-accent="cyan" aria-label="Cyan screen glow" aria-pressed="true" style="--swatch:#82e8f5"></button><button type="button" data-accent="amber" aria-label="Amber screen glow" aria-pressed="false" style="--swatch:#ffc17f"></button><button type="button" data-accent="white" aria-label="White screen glow" aria-pressed="false" style="--swatch:#f1f0e8"></button></div></fieldset>
+      <fieldset><legend>Stage screen photos & text</legend><p class="field-hint">Add up to 4 photos and a message for each. Scroll toward the stage to see them on the screen.</p><label class="upload-box" for="concert-photos"><span>＋ Add your photos</span><input id="concert-photos" type="file" accept="image/jpeg,image/png,image/webp" multiple></label><label>Photo framing<select id="photo-fit"><option value="contain">Show the whole photo</option><option value="cover">Fill the screen (crop edges)</option></select></label><div id="photo-list" class="photo-list"></div></fieldset>
+      <p id="customization-status" class="customization-status" role="status">Your changes stay in this browser until you download the celebration.</p>
+      <div class="panel-actions"><button type="submit" class="panel-primary">Save & preview</button><button type="button" id="download-concert" class="panel-secondary">Download celebration</button></div>
+      <button type="button" id="reset-concert" class="reset-button">Reset to sample content</button>
+      <p class="field-hint">Downloads include the concert artwork and uploaded photos. Public hosting for individual celebrations is not connected yet.</p>
+    </form>
+  </dialog>
+  <div id="concert-toast" role="status"></div>
+  <noscript><p class="noscript-notice">Enable JavaScript to explore the scroll concert and personalize it. The birthday message is available below.</p></noscript>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7bbd0">
+  <meta name="description" content="A little website. A very big feeling. Turn your photos, words, and favorite memories into a celebration made just for them.">
+  <title>Little Cheers — Make their whole day.</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/vendor/gsap.min.js" defer></script>
+  <script src="/vendor/ScrollTrigger.min.js" defer></script>
+  <script src="/catalog.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#templates">Skip to templates</a>
+  <header class="navigation">
+    <a class="wordmark" href="/" aria-label="Little Cheers home">little cheers<span class="brand-flower" aria-hidden="true">✳</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#templates">The templates</a>
+      <a href="#how-it-works">How it works</a>
+    </nav>
+    <button class="pill dark small" data-create>Make someone's day <span aria-hidden="true">↗</span></button>
+  </header>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="intro"><span class="tiny-flower" aria-hidden="true">✳</span> For your favorite people.</p>
+        <h1 id="hero-title">Make their<br>whole day<span class="period">.</span></h1>
+        <div class="hero-bottom">
+          <p>A little website. A very big feeling.<br>Turn your memories into something<br>they'll want to keep forever.</p>
+          <a href="#templates" class="pill dark">Find their perfect template <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="A birthday celebration with photos and a personal note">
+        <div class="scribble-note">a little more personal<br>than “hbd” <svg viewBox="0 0 85 65" aria-hidden="true"><path d="M5 5Q70 0 60 52M43 39L60 55L77 39"/></svg></div>
+        <div class="hero-card back-card"><span>Some things<br>get better<br>with you.</span><div class="outlined-heart">♡</div></div>
+        <div class="hero-card birthday-card">
+          <div class="mini-top"><span>A day that's all yours</span><span>♡</span></div>
+          <h2>Hey, birthday<br>person.</h2>
+          <div class="birthday-photo"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=700&q=85" alt="A smiling woman outside" fetchpriority="high"><span class="photo-sticker">so glad<br>you exist!</span></div>
+          <p>Here's to more life, more laughs,<br>and more of you.</p>
+          <span class="mini-bottom">Made with love, just for you.</span>
+        </div>
+        <div class="round-sticker"><span>100% you.<br>Zero boring.</span><b aria-hidden="true">✦</b></div>
+      </div>
+      <a class="scroll-cue" href="#templates"><span>Good things below</span><span aria-hidden="true">↓</span></a>
+      <p class="hero-footnote">Birthdays. Big moments. Just because.</p>
+    </section>
+    <section class="templates-section" id="templates" aria-labelledby="templates-title">
+      <div class="section-heading">
+        <div><p class="section-kicker">A starting point for something special</p><h2 id="templates-title">Their kind of lovely.</h2></div>
+        <p>Pick a feeling. Make it theirs.<br>Every design is a little different.<br>Just like your people.</p>
+      </div>
+      <div class="gallery-tools">
+        <div class="filters" aria-label="Filter templates by occasion">
+          <button class="filter active" aria-pressed="true" data-filter="All">All occasions</button>
+          <button class="filter" aria-pressed="false" data-filter="Birthday">Birthdays</button>
+          <button class="filter" aria-pressed="false" data-filter="Anniversary">Anniversaries</button>
+          <button class="filter" aria-pressed="false" data-filter="Just because">Just because</button>
+        </div>
+        <label class="recipient-filter">For <select id="recipient" aria-label="Filter templates by recipient"><option value="Everyone">everyone</option><option value="Her">her</option><option value="Him">him</option></select></label>
+      </div>
+      <div class="gallery-window"><div class="template-columns" id="template-columns"></div></div>
+      <div class="gallery-end"><span>Little details. Lasting feelings.</span><button class="text-button" id="browse-all" aria-expanded="false">Browse all 15 templates <span aria-hidden="true">↗</span></button></div>
+    </section>
+    <section class="personal-section" id="how-it-works" aria-labelledby="personal-title">
+      <div class="personal-heading"><span class="large-flower" aria-hidden="true">✳</span><h2 id="personal-title">Their story.<br>Your little touch.</h2><p>You bring the inside jokes and the camera roll.<br>We bring a beautiful place to put them.</p></div>
+      <div class="personal-layout">
+        <div class="live-design">
+          <div class="preview-browser"><span><i></i><i></i><i></i></span><span>A little preview of their big day</span><span>♡</span></div>
+          <div class="sample-card" id="sample-card">
+            <p>A whole day to celebrate you</p><h3>Here's to you,<br><span id="sample-name">Alex.</span></h3>
+            <div class="sample-photo"><img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?auto=format&fit=crop&w=800&q=85" alt="Friends sharing a warm hug" loading="lazy"></div>
+            <p>More adventures. More terrible jokes.<br>More memories with my favorite human.</p><span class="sample-doodle" aria-hidden="true">♡</span>
+          </div>
+          <div class="palette-bar"><span>Set the mood</span><div class="swatches" id="demo-swatches"></div><span class="palette-name" id="palette-name">Rose</span></div>
+        </div>
+        <div class="steps">
+          <article><span class="step-number">01</span><div><h3>Find their vibe.</h3><p>Sweet, playful, a little dramatic? Start with a design that feels like them.</p></div></article>
+          <article><span class="step-number">02</span><div><h3>Make it personal.</h3><p>Add your photos, write that little note, and pick their favorite colors.</p></div></article>
+          <article><span class="step-number">03</span><div><h3>Give them a moment.</h3><p>Preview your creation and save a keepsake page. A little surprise they can open again and again.</p></div></article>
+          <button class="pill dark" data-create>Let's make something personal <span aria-hidden="true">↗</span></button>
+        </div>
+      </div>
+    </section>
+    <section class="closing"><div class="closing-note">No occasion too small.</div><h2>“I made this<br>just for you.”</h2><div class="closing-bottom"><p>Sometimes, that's the best gift.</p><button class="pill light" data-create>Make your little something <span aria-hidden="true">↗</span></button></div><span class="closing-star" aria-hidden="true">✳</span></section>
+  </main>
+  <footer><a class="wordmark" href="/">little cheers<span aria-hidden="true">✳</span></a><p>For people who mean a little more.</p><a href="#templates">Find a template <span aria-hidden="true">↑</span></a></footer>
+  <dialog id="editor" aria-labelledby="editor-title">
+    <div class="editor-header"><div><span class="editor-label">Make it yours</span><h2 id="editor-title">A little celebration</h2></div><button class="close-button" id="close-editor" aria-label="Close customization">×</button></div>
+    <div class="editor-body">
+      <form id="editor-form">
+        <label>Their name<input id="person-name" name="name" maxlength="35" value="Alex" required></label>
+        <label>Your headline<input id="headline" name="headline" maxlength="70" value="Here's to you," required></label>
+        <label>A little note<textarea id="note" name="note" rows="4" maxlength="600">More adventures. More terrible jokes. More memories with my favorite human.</textarea></label>
+        <label>From<input id="sender" name="sender" maxlength="50" placeholder="Your name"></label>
+        <label>Your photo<input id="photo" type="file" accept="image/jpeg,image/png,image/webp"></label>
+        <fieldset><legend>Choose a color</legend><div id="editor-swatches" class="swatches"></div></fieldset>
+        <p id="editor-status" class="editor-status" role="status">Your draft stays in this browser. Download it to keep or send.</p>
+        <div class="editor-actions"><button type="button" class="pill dark" id="download">Download your page <span aria-hidden="true">↗</span></button><button type="button" class="save-button" id="save-draft">Save draft</button></div>
+      </form>
+      <div class="editor-preview"><div id="personal-preview"></div><p>Live preview · Your words, your colors, your person.</p></div>
+    </div>
+  </dialog>
+  <div id="toast" role="status"></div>
+</body>
+</html>

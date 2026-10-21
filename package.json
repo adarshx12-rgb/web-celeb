@@ -1,0 +1,17 @@
+{
+  "name": "web-celebrations",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node site/server.mjs",
+    "build": "node site/build.mjs",
+    "preview": "node site/server.mjs"
+  },
+  "dependencies": {
+    "@gsap/react": "latest",
+    "gsap": "latest",
+    "motion": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "stage-layer.webp": {
+    "x": 552,
+    "y": 256,
+    "width": 2711,
+    "height": 957,
+    "sourceWidth": 3840,
+    "sourceHeight": 2160
+  },
+  "runway-layer.webp": {
+    "x": 1760,
+    "y": 1120,
+    "width": 318,
+    "height": 234,
+    "sourceWidth": 3840,
+    "sourceHeight": 2160
+  },
+  "crowd-front.webp": {
+    "x": 0,
+    "y": 1096,
+    "width": 3840,
+    "height": 1059,
+    "sourceWidth": 3840,
+    "sourceHeight": 2160
+  }
+}

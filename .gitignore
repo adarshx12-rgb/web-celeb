@@ -1,0 +1,10 @@
+node_modules/
+.npm-cache/
+dist/
+output/
+.agents/
+.claude/
+.openai/
+.env
+.env.*
+!.env.example
